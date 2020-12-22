@@ -56,8 +56,8 @@ ProcessConfig = uMemWatch
 
 ProcessConfig = pLogger
 {
-  AppTick   = 8
-  CommsTick = 8
+  AppTick   = 4
+  CommsTick = 4
 
   AsyncLog = true
 
