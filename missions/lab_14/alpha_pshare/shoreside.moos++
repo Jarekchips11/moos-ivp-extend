@@ -1,0 +1,191 @@
+ServerHost   = localhost
+ServerPort   = 9000
+Community    = shoreside
+//----  Next Line was commented and replaced with a command line overload ---- //
+//MOOSTimeWarp = 1    (default)
+MOOSTimeWarp = 1
+
+// Forest Lake
+LatOrigin  = 43.825300 
+LongOrigin = -70.330400 
+
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 200
+
+  Run = MOOSDB          @ NewConsole = false
+  Run = pMarineViewer 	@ NewConsole = false
+  Run = pShare			    @ NewConsole = false
+  Run = uFldShoreBroker @ NewConsole = false
+  Run = pHostInfo       @ NewConsole = false
+  Run = uFldObstacleSim @ NewConsole = false
+  Run = uFldNodeComms   @ NewConsole = false
+}
+
+//------------------------------------------
+// pMarineViewer config block
+
+ProcessConfig = pMarineViewer
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  tiff_file            = forrest19.tif
+	//tiff_file            = MIT_SP.tif
+
+  set_pan_x            = -90
+  set_pan_y            = -280
+  zoom                 = 0.65
+  vehicle_shape_scale  = 1.5
+  hash_delta           = 50
+  hash_shade           = 0.22
+  hash_viewable        = true
+
+  trails_point_size   = 1
+
+	//op_vertex = x=-83, y=-47,    lwidth=1,lcolor=yellow,looped=true,group=moa
+  //op_vertex = x=-46.4, y=-129.2, lwidth=1,lcolor=yellow,looped=true,group=moa
+  //op_vertex = x=94.6, y=-62.2,   lwidth=1,lcolor=yellow,looped=true,group=moa
+  //op_vertex = x=58,   y=20,    lwidth=1,lcolor=yellow,looped=true,group=moa
+
+	// vcolor = alpha=dodgerblue
+
+  // Appcast configuration
+  appcast_height       = 75
+  appcast_width        = 30
+  appcast_viewable     = true
+  appcast_color_scheme = indigo
+  nodes_font_size      = medium
+  procs_font_size      = medium
+  appcast_font_size    = small
+  
+  // datum_viewable = true
+  // datum_size     = 18
+  // gui_size = small
+
+  // left_context[survey-point] = DEPLOY=true
+  // left_context[survey-point] = MOOS_MANUAL_OVERRIDE=false
+  // left_context[survey-point] = RETURN=false
+
+  left_context[WPT_UPDATE] = WPT_UPDATE = "polygon=$(XPOS),$(YPOS)"
+  //left_context[WPT_UPDATE] = VIEW_POINT = x=$(XPOS), y=$(YPOS), label=$(XPOS):
+  
+  right_context[return] = DEPLOY=true
+  right_context[return] = MOOS_MANUAL_OVERRIDE=false
+  right_context[return] = RETURN=false
+
+	scope  = CRUISE_SPD
+  scope  = HELM_CORE_SIZE_MAX
+  scope  = HELM_CORE_SIZE
+  scope  = HELM_ENGINE_SIZE
+  scope  = HELM_SIZE
+  scope  = RETURN
+  scope  = WPT_STAT
+  scope  = VIEW_SEGLIST
+  scope  = VIEW_POINT
+  scope  = VIEW_POLYGON
+  scope  = MVIEWER_LCLICK
+  scope  = MVIEWER_RCLICK
+
+  button_one = DEPLOY # DEPLOY=true
+  button_one = MOOS_MANUAL_OVERRIDE=false # RETURN=false
+  button_two = RETURN # RETURN=true
+  button_three = SLOWER # WPT_UPDATE=speed=1.5
+  button_four = FASTER # WPT_UPDATE=speed=3.5
+
+  action  = MENU_KEY=deploy # DEPLOY = true # RETURN = false
+  action+ = MENU_KEY=deploy # MOOS_MANUAL_OVERRIDE=false
+  action  = RETURN=true
+  action  = UPDATES_RETURN=speed=1.4
+}
+
+ProcessConfig = pShare
+{
+	AppTick 	= 4
+	CommsTick 	= 4
+
+	input		= route=localhost:9203
+
+}
+
+ProcessConfig = uFldShoreBroker                                 
+{                                                               
+  AppTick   = 2                                                 
+  CommsTick = 2                                                 
+                                                                
+  warning_on_stale = false                        
+                                                                
+  bridge = src=DEPLOY_ALL, alias=DEPLOY                         
+  bridge = src=DEPLOY_$V,  alias=DEPLOY                         
+                                                                
+  qbridge = RETURN                                              
+  qbridge = NODE_REPORT, STATION_KEEP                           
+                                                                
+  //bridge = src=UP_LOITER_$N, alias=UP_LOITER                    
+                                                                
+  // Note: [qbridge = FOO]  is shorthand for                    
+  //       [bridge = src=FOO_$V,  alias=FOO] and                
+  //       [bridge = src=FOO_ALL, alias=FOO]     
+
+
+  //qbridge  = DEPLOY, RETURN, STATION_KEEP, NODE_REPORT, NODE_MESSAGE
+  //qbridge  = MOOS_MANUAL_OVERRIDE, APPCAST_REQ, AVOID
+  //qbridge  = EVAL_LOITER_REQ
+
+  //bridge   = src=UP_LOITER_$N, alias=UP_LOITER
+  //bridge   = src=DRIFT_VECTOR_ADD, alias=DRIFT_VECTOR_ADD
+  //bridge   = src=HELM_MAP_CLEAR, alias=HELM_MAP_CLEAR
+  
+  qbridge  = TRACKED_FEATURE
+  bridge  = src=WPT_UPDATE, alias=WPT_UPDATE
+  bridge   = src=GIVEN_OBSTACLE
+
+  bridge   = src=RETURN, alias=RETURN
+  bridge   = src=DEPLOY, alias=DEPLOY
+  bridge   = src=MOOS_MANUAL_OVERRIDE, alias=MOOS_MANUAL_OVERRIDE
+
+}                                                               
+
+ProcessConfig = pHostInfo
+{
+  AppTick   = 1
+  CommsTick   = 1
+
+}
+
+
+ProcessConfig = uFldObstacleSim
+{
+  AppTick       = 1
+  CommsTick     = 1
+
+  obstacle_file = obstacles.txt
+
+  draw_region = true
+  region_edge_color = gray50
+
+  poly_fill_color = gray50
+  
+  min_duration = 400
+  max_duration = 500
+  refresh_interval = 200
+
+  post_points = false
+
+  reuse_ids = false
+}
+
+
+ProcessConfig = uFldNodeComms
+{
+  AppTick   = 2
+  CommsTick = 2
+
+  comms_range      = 500
+  critical_range   = 25
+  min_msg_interval = 15
+  max_msg_length   = 1000
+  groups           = true
+
+  view_node_rpt_pulses = false
+}

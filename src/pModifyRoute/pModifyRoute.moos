@@ -1,0 +1,9 @@
+//------------------------------------------------
+// pModifyRoute config block
+
+ProcessConfig = pModifyRoute
+{
+   AppTick   = 4
+   CommsTick = 4
+}
+
