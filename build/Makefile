@@ -195,19 +195,6 @@ pXRelayTest/fast:
 .PHONY : pXRelayTest/fast
 
 #=============================================================================
-# Target rules for targets named pPrimeFactor
-
-# Build rule for target.
-pPrimeFactor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pPrimeFactor
-.PHONY : pPrimeFactor
-
-# fast build rule for target.
-pPrimeFactor/fast:
-	$(MAKE) $(MAKESILENT) -f src/pPrimeFactor/CMakeFiles/pPrimeFactor.dir/build.make src/pPrimeFactor/CMakeFiles/pPrimeFactor.dir/build
-.PHONY : pPrimeFactor/fast
-
-#=============================================================================
 # Target rules for targets named pOdometry
 
 # Build rule for target.
@@ -247,7 +234,6 @@ help:
 	@echo "... pExampleApp"
 	@echo "... pModifyRoute"
 	@echo "... pOdometry"
-	@echo "... pPrimeFactor"
 	@echo "... pXRelayTest"
 .PHONY : help
 

@@ -9,6 +9,10 @@
 /Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute.cpp
 iterator
 -
+vector
+-
+string
+-
 MBUtils.h
 /Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/MBUtils.h
 ModifyRoute.h
@@ -17,32 +21,6 @@ ModifyRoute.h
 /Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute.h
 MOOS/libMOOS/MOOSLib.h
 /Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/MOOS/libMOOS/MOOSLib.h
-
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute_Info.cpp
-cstdlib
--
-iostream
--
-ModifyRoute_Info.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute_Info.h
-ColorParse.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ColorParse.h
-ReleaseInfo.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ReleaseInfo.h
-
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute_Info.h
-
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/main.cpp
-string
--
-MBUtils.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/MBUtils.h
-ColorParse.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ColorParse.h
-ModifyRoute.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute.h
-ModifyRoute_Info.h
-/Users/jaroslawlewandowski/moos-ivp-extend/src/pModifyRoute/ModifyRoute_Info.h
 
 /Users/jaroslawlewandowski/moos-ivp/MOOS/MOOSCore/Core/libMOOS/App/include/MOOS/libMOOS/App/ClientDefines.h
 
@@ -580,12 +558,6 @@ MOOS/libMOOS/App/MOOSApp.h
 MOOS/libMOOS/App/MOOSInstrument.h
 /Users/jaroslawlewandowski/moos-ivp/MOOS/MOOSCore/Core/libMOOS/include/MOOS/libMOOS/MOOS/libMOOS/App/MOOSInstrument.h
 
-/Users/jaroslawlewandowski/moos-ivp/ivp/src/lib_mbutil/ColorParse.h
-vector
--
-string
--
-
 /Users/jaroslawlewandowski/moos-ivp/ivp/src/lib_mbutil/MBUtils.h
 vector
 -
@@ -594,9 +566,5 @@ string
 set
 -
 time.h
--
-
-/Users/jaroslawlewandowski/moos-ivp/ivp/src/lib_mbutil/ReleaseInfo.h
-string
 -
 

@@ -18,6 +18,8 @@ ProcessConfig = ANTLER
   Run = pHostInfo       @ NewConsole = false
   Run = uFldObstacleSim @ NewConsole = false
   Run = uFldNodeComms   @ NewConsole = false
+  Run = pModifyRoute    @ NewConsole = false
+
 }
 
 //------------------------------------------
@@ -65,7 +67,7 @@ ProcessConfig = pMarineViewer
   // left_context[survey-point] = MOOS_MANUAL_OVERRIDE=false
   // left_context[survey-point] = RETURN=false
 
-  left_context[WPT_UPDATE] = WPT_UPDATE = "polygon=$(XPOS),$(YPOS)"
+  left_context[WPT_ADD] = WPT_ADD = "$(XPOS),$(YPOS)"
   //left_context[WPT_UPDATE] = VIEW_POINT = x=$(XPOS), y=$(YPOS), label=$(XPOS):
   
   right_context[return] = DEPLOY=true
@@ -88,8 +90,8 @@ ProcessConfig = pMarineViewer
   button_one = DEPLOY # DEPLOY=true
   button_one = MOOS_MANUAL_OVERRIDE=false # RETURN=false
   button_two = RETURN # RETURN=true
-  button_three = SLOWER # WPT_UPDATE=speed=1.5
-  button_four = FASTER # WPT_UPDATE=speed=3.5
+  button_three = CLEAR # WPT_UPDATE=point=0,0
+  //button_four = FASTER # WPT_UPDATE=speed=3.5
 
   action  = MENU_KEY=deploy # DEPLOY = true # RETURN = false
   action+ = MENU_KEY=deploy # MOOS_MANUAL_OVERRIDE=false
@@ -141,6 +143,8 @@ ProcessConfig = uFldShoreBroker
   bridge   = src=RETURN, alias=RETURN
   bridge   = src=DEPLOY, alias=DEPLOY
   bridge   = src=MOOS_MANUAL_OVERRIDE, alias=MOOS_MANUAL_OVERRIDE
+  bridge   = src=WPT_UPDATE, alias=WPT_UPDATE
+
 
 }                                                               
 

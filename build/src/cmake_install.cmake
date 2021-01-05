@@ -37,7 +37,6 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/Users/jaroslawlewandowski/moos-ivp-extend/build/src/lib_behaviors-test/cmake_install.cmake")
   include("/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pExampleApp/cmake_install.cmake")
   include("/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pXRelayTest/cmake_install.cmake")
-  include("/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pPrimeFactor/cmake_install.cmake")
   include("/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pOdometry/cmake_install.cmake")
   include("/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pModifyRoute/cmake_install.cmake")
 

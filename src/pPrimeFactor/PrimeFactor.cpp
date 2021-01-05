@@ -90,11 +90,9 @@ bool PrimeFactor::Iterate()
   {
     copy(my_list.begin(), my_list.end(),
         ostream_iterator<uint64_t>(oss));
-  }
   mojstring = "Orig="+oss.str()+", received="+to_string(m_prime_receive)+", calculated="+to_string(m_prime_calculated);
 
   Notify("NUM_RESULT", mojstring);
-
   /*
   list<string>:: iterator iter;
   for(iter=my_list.begin(); iter!=my_list.end(); iter++){
