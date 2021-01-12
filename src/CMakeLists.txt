@@ -22,7 +22,7 @@ ADD_SUBDIRECTORY(pXRelayTest)
 #ADD_SUBDIRECTORY(pPrimeFactor)
 ADD_SUBDIRECTORY(pOdometry)
 ADD_SUBDIRECTORY(pModifyRoute)
-
+ADD_SUBDIRECTORY(pPatrolPoint)
 ##############################################################################
 #                           END of CMakeLists.txt
 ##############################################################################

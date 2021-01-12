@@ -1,1 +1,1 @@
-gen_obstacles --poly=180,-180:55,-180:55,-30:180,-30 --amt=5 --min_size=5 --max_size=15 --min_range=10 --meter > obstacles.txt
+gen_obstacles --poly=0,0:0,-180:180,-180:180,0 --amt=5 --min_size=5 --max_size=15 --min_range=10 --meter > obstacles.txt

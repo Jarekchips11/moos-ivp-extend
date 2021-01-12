@@ -19,3 +19,6 @@
 /Users/jaroslawlewandowski/moos-ivp-extend/build/src/pModifyRoute/CMakeFiles/rebuild_cache.dir
 /Users/jaroslawlewandowski/moos-ivp-extend/build/src/pModifyRoute/CMakeFiles/edit_cache.dir
 /Users/jaroslawlewandowski/moos-ivp-extend/build/src/pModifyRoute/CMakeFiles/pModifyRoute.dir
+/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pPatrolPoint/CMakeFiles/rebuild_cache.dir
+/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pPatrolPoint/CMakeFiles/edit_cache.dir
+/Users/jaroslawlewandowski/moos-ivp-extend/build/src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir

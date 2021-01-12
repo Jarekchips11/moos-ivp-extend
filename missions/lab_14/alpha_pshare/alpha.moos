@@ -22,21 +22,24 @@ ProcessConfig = ANTLER
 {
   MSBetweenLaunches = 200
 
-  Run = MOOSDB          @ NewConsole = false
-  //Run = pLogger         @ NewConsole = false
-  Run = uSimMarine	    @ NewConsole = false
-  Run = pMarinePID      @ NewConsole = false
-  Run = pHelmIvP        @ NewConsole = false
-  Run = uProcessWatch	  @ NewConsole = false
-  Run = pNodeReporter	  @ NewConsole = false
-  Run = uMemWatch       @ NewConsole = false
-  Run = pShare          @ NewConsole = false
-  Run = uFldNodeBroker  @ NewConsole = false
-  Run = pHostInfo       @ NewConsole = false
-  Run = pObstacleMgr    @ NewConsole = false
-  Run = pContactMgrV20  @ NewConsole = false
+  Run = MOOSDB           @ NewConsole = false
+  //Run = pLogger        @ NewConsole = false
+  Run = uSimMarine	     @ NewConsole = false
+  Run = pMarinePID       @ NewConsole = false
+  Run = pHelmIvP         @ NewConsole = false
+  Run = uProcessWatch	   @ NewConsole = false
+  Run = pNodeReporter	   @ NewConsole = false
+  Run = uMemWatch        @ NewConsole = false
+  Run = pShare           @ NewConsole = false
+  Run = uFldNodeBroker   @ NewConsole = false
+  Run = pHostInfo        @ NewConsole = false
+  Run = pObstacleMgr     @ NewConsole = false
+  Run = pContactMgrV20   @ NewConsole = false
+  Run = pPatrolPoint     @ NewConsole = false
 
 }
+           
+
 
 //------------------------------------------
 // uMemWatch config block
@@ -105,6 +108,12 @@ ProcessConfig = uSimMarine
   turn_rate     = 40
   thrust_map    = 0:0, 20:1, 40:2, 60:3, 80:4, 100:5
   thrust_reflect = true
+
+  buoyancy_rate        = 0.15
+  max_depth_rate       = 5
+  max_depth_rate_speed = 2.0
+  default_water_depth  = 400
+
 }
 
 //------------------------------------------
@@ -118,6 +127,7 @@ ProcessConfig = pHelmIvP
   behaviors  = alpha.bhv
   domain     = course:0:359:360
   domain     = speed:0:4:41
+  domain     = depth:0:100:101
 }
 
 //------------------------------------------
@@ -129,7 +139,7 @@ ProcessConfig = pMarinePID
   CommsTick  = 20
 
   verbose       = true
-  depth_control = false
+  depth_control = true
 
   // SIM_INSTABILITY = 20
 
@@ -145,6 +155,20 @@ ProcessConfig = pMarinePID
   speed_pid_ki		 = 0.0
   speed_pid_integral_limit = 0.07
 
+   //Pitch PID controller
+   pitch_pid_kp                   = 1.5
+   pitch_pid_kd                   = 0.3
+   pitch_pid_ki                   = 0.004
+   pitch_pid_integral_limit       = 0
+
+   //ZPID controller
+   z_to_pitch_pid_kp              = 0.12
+   z_to_pitch_pid_kd              = 0.1
+   z_to_pitch_pid_ki              = 0.004
+   z_to_pitch_pid_integral_limit  = 0.05
+
+   maxpitch     = 15
+   maxelevator  = 13
   //MAXIMUMS
   maxrudder    = 100
   maxthrust    = 100
@@ -163,7 +187,7 @@ ProcessConfig = pNodeReporter
   AppTick    = 2
   CommsTick	 = 2
 
-  platform_type   = kayak
+  platform_type   = UUV
   platform_color  = yellow
   platform_length = 4
 }
@@ -189,7 +213,7 @@ ProcessConfig = uFldNodeBroker
   TRY_SHORE_HOST = pshare_route=localhost:9203                                  
                                                                 
   BRIDGE = src=VIEW_POLYGON
-  BRIDGE = src= VIEW_MARKER 
+  BRIDGE = src=VIEW_MARKER 
   BRIDGE = src=VIEW_CIRCLE
   BRIDGE = src=VIEW_POINT
   BRIDGE = src=VIEW_SEGLIST
@@ -197,6 +221,10 @@ ProcessConfig = uFldNodeBroker
   BRIDGE = src=NODE_REPORT_LOCAL,  alias=NODE_REPORT
   BRIDGE = src=NODE_MESSAGE_LOCAL, alias=NODE_MESSAGE
   bridge = src=VEHICLE_CONNECT
+  bridge = src=CRS_RANGE_REPORT
+  bridge = src=WPT_INDEX
+  bridge = src=WPT_STAT
+  bridge = src=KUTAS
 }   
 
 ProcessConfig = pHostInfo

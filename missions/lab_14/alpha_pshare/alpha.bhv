@@ -2,12 +2,13 @@
 
 initialize   DEPLOY = false
 initialize   RETURN = false
-	
-//----------------------------------------------
+
+//-----------------------------------------------
 Behavior = BHV_Waypoint
 { 
   name      = waypt_survey
   pwt       = 100
+  condition = MODE==SURVEYING
   condition = RETURN = false
   condition = DEPLOY = true
   endflag   = RETURN = true
@@ -32,22 +33,22 @@ Behavior = BHV_Waypoint
 
 	    speed_alt = 1.2
   use_alt_speed = true
-                lead = 8
+                //lead = 8
          lead_damper = 1
        lead_to_start = true
-               speed = 12   // meters per second
+               speed = 4  // meters per second
         capture_line = true
-      capture_radius = 5.0
-         slip_radius = 15.0
+      capture_radius = 20.0
+         slip_radius = 20.0
 	efficiency_measure = all
 
-  //           points = pts={107.5,-53.5:112,-43.8:112,-46.1:111.7,-49.3:108.3,-52.7:107.7,-53.3}
+           points = pts={0,0}
     
-    polygon = 60,-40 : 60,-160 : 150,-160 : 180,-100 : 150,-40
+    //polygon = 60,-40 : 60,-160 : 150,-160 : 180,-100 : 150,-40
 
                order = normal
              //repeat  = 100000
-             repeat  = 100000
+             repeat  = 5
 
     visual_hints = nextpt_color=yellow
     visual_hints = nextpt_vertex_size=8
@@ -72,7 +73,7 @@ Behavior=BHV_Waypoint
            speed = 2.0
   capture_radius = 2.0
      slip_radius = 8.0
-          points = 0,-20
+          points = 0,0
  }
 
 //----------------------------------------------
@@ -81,7 +82,7 @@ Behavior=BHV_ConstantSpeed
   name       = const_speed
   pwt        = 200
   condition  = SPD=true
-  condition  = DEPLOY = true
+  //condition  = DEPLOY = true
   perpetual  = true
   updates    = SPEED_UPDATE
   endflag    = SPD = false
@@ -106,3 +107,74 @@ Behavior=BHV_ConstantSpeed
      pwt_inner_dist = 10
      completed_dist = 25
  }
+
+//-----------------------------------------------
+
+Behavior=BHV_Waypoint
+{
+  name       = waypt_skeeping
+  pwt        = 100
+  condition  = MODE==WATCHING
+  updates    = SKEEPING_UPDATE
+  
+           speed = 0.1
+  capture_radius = 2.0
+     slip_radius = 8.0
+          points = 0,0
+ }
+
+
+Behavior = BHV_StationKeep
+ {
+   // General Behavior Parameters
+   // ---------------------------
+   name         = station_keep          // example
+   pwt          = 100                   // default
+   condition    = MODE==SKEEPING        // example
+   //inactiveflag = STATIONING = false    // example
+   //activeflag   = STATIONING = true     // example
+   updates      = STATION_UPDATES
+
+
+   // Parameters specific to this behavior
+   // ------------------------------------
+      center_activate = false   // default
+   hibernation_radius = -1      // default
+         inner_radius = 4       // default
+         outer_radius = 15      // default
+         outer_speed  = 1.0     // default
+       transit_speed  = 2.5     // default
+           station_pt = 60,-40     // default
+           swing_time = 0       // default
+
+         visual_hints = vertex_size  = 1           // default
+         visual_hints = edge_color   = light_blue  // default
+         visual_hints = edge_size    = 1           // default
+         visual_hints = label_color  = white       // default
+         visual_hints = vertex_color = red         // default
+ }
+Behavior = BHV_ConstantDepth
+ {
+   // General Behavior Parameters
+   // ---------------------------
+  name         = const_dep_survey   // example
+  pwt          = 100                // default
+  
+  //condition = RETURN = false
+  condition = DEPLOY = true
+  
+
+  updates      = CONST_DEP_UPDATES  // example
+
+   // Parameters specific to this behavior
+   // ------------------------------------
+            basewidth = 100          // default
+                depth = 5            // default
+   depth_mismatch_var = DEPTH_DIFF   // example
+             duration = no-time-limit            // default
+            peakwidth = 3            // default
+          summitdelta = 50           // default
+ }
+
+ //----------------------------------------------
+

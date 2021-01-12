@@ -16,6 +16,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../src/pExampleApp/CMakeLists.txt"
   "../src/pModifyRoute/CMakeLists.txt"
   "../src/pOdometry/CMakeLists.txt"
+  "../src/pPatrolPoint/CMakeLists.txt"
   "../src/pXRelayTest/CMakeLists.txt"
   "/Users/jaroslawlewandowski/moos-ivp/build/MOOS/MOOSCore/MOOSConfig.cmake"
   "/Users/jaroslawlewandowski/moos-ivp/build/MOOS/MOOSCore/MOOSConfigVersion.cmake"
@@ -66,6 +67,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/pXRelayTest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/pOdometry/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/pModifyRoute/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/pPatrolPoint/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -77,4 +79,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/pXRelayTest/CMakeFiles/pXRelayTest.dir/DependInfo.cmake"
   "src/pOdometry/CMakeFiles/pOdometry.dir/DependInfo.cmake"
   "src/pModifyRoute/CMakeFiles/pModifyRoute.dir/DependInfo.cmake"
+  "src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/DependInfo.cmake"
   )

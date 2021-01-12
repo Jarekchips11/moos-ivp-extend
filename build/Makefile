@@ -220,6 +220,19 @@ pModifyRoute/fast:
 	$(MAKE) $(MAKESILENT) -f src/pModifyRoute/CMakeFiles/pModifyRoute.dir/build.make src/pModifyRoute/CMakeFiles/pModifyRoute.dir/build
 .PHONY : pModifyRoute/fast
 
+#=============================================================================
+# Target rules for targets named pPatrolPoint
+
+# Build rule for target.
+pPatrolPoint: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pPatrolPoint
+.PHONY : pPatrolPoint
+
+# fast build rule for target.
+pPatrolPoint/fast:
+	$(MAKE) $(MAKESILENT) -f src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/build.make src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/build
+.PHONY : pPatrolPoint/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -234,6 +247,7 @@ help:
 	@echo "... pExampleApp"
 	@echo "... pModifyRoute"
 	@echo "... pOdometry"
+	@echo "... pPatrolPoint"
 	@echo "... pXRelayTest"
 .PHONY : help
 

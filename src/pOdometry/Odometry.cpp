@@ -46,13 +46,13 @@ bool Odometry::OnNewMail(MOOSMSG_LIST &NewMail)
   for(p=NewMail.begin(); p!=NewMail.end(); p++) {
     CMOOSMsg &msg = *p;
 
-    if (msg.GetKey() == "NAV_X" && msg.IsDouble()) {
-      m_previous_x = m_current_x;
-      m_current_x  = msg.GetDouble();
-    } else if (msg.GetKey() == "NAV_Y" && msg.IsDouble()) {
-      m_previous_y = m_current_y;
-      m_current_y  = msg.GetDouble();
-    }
+  if (msg.GetKey() == "NAV_X" && msg.IsDouble()) {
+    m_previous_x = m_current_x;
+    m_current_x  = msg.GetDouble();
+  } else if (msg.GetKey() == "NAV_Y" && msg.IsDouble()) {
+    m_previous_y = m_current_y;
+    m_current_y  = msg.GetDouble();
+  }
 
 #if 0 // Keep these around just for template
     string key   = msg.GetKey();

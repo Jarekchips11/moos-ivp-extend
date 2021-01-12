@@ -95,6 +95,7 @@ src/all: src/pExampleApp/all
 src/all: src/pXRelayTest/all
 src/all: src/pOdometry/all
 src/all: src/pModifyRoute/all
+src/all: src/pPatrolPoint/all
 
 .PHONY : src/all
 
@@ -104,6 +105,7 @@ src/preinstall: src/pExampleApp/preinstall
 src/preinstall: src/pXRelayTest/preinstall
 src/preinstall: src/pOdometry/preinstall
 src/preinstall: src/pModifyRoute/preinstall
+src/preinstall: src/pPatrolPoint/preinstall
 
 .PHONY : src/preinstall
 
@@ -113,6 +115,7 @@ src/clean: src/pExampleApp/clean
 src/clean: src/pXRelayTest/clean
 src/clean: src/pOdometry/clean
 src/clean: src/pModifyRoute/clean
+src/clean: src/pPatrolPoint/clean
 
 .PHONY : src/clean
 
@@ -191,6 +194,24 @@ src/pOdometry/preinstall:
 src/pOdometry/clean: src/pOdometry/CMakeFiles/pOdometry.dir/clean
 
 .PHONY : src/pOdometry/clean
+
+#=============================================================================
+# Directory level rules for directory src/pPatrolPoint
+
+# Recursive "all" directory target.
+src/pPatrolPoint/all: src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/all
+
+.PHONY : src/pPatrolPoint/all
+
+# Recursive "preinstall" directory target.
+src/pPatrolPoint/preinstall:
+
+.PHONY : src/pPatrolPoint/preinstall
+
+# Recursive "clean" directory target.
+src/pPatrolPoint/clean: src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/clean
+
+.PHONY : src/pPatrolPoint/clean
 
 #=============================================================================
 # Directory level rules for directory src/pXRelayTest
@@ -325,7 +346,7 @@ src/pExampleApp/CMakeFiles/pExampleApp.dir/clean:
 src/pXRelayTest/CMakeFiles/pXRelayTest.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/pXRelayTest/CMakeFiles/pXRelayTest.dir/build.make src/pXRelayTest/CMakeFiles/pXRelayTest.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/pXRelayTest/CMakeFiles/pXRelayTest.dir/build.make src/pXRelayTest/CMakeFiles/pXRelayTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jaroslawlewandowski/moos-ivp-extend/build/CMakeFiles --progress-num=18,19,20,21 "Built target pXRelayTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jaroslawlewandowski/moos-ivp-extend/build/CMakeFiles --progress-num=22,23,24,25 "Built target pXRelayTest"
 .PHONY : src/pXRelayTest/CMakeFiles/pXRelayTest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -398,6 +419,33 @@ pModifyRoute: src/pModifyRoute/CMakeFiles/pModifyRoute.dir/rule
 src/pModifyRoute/CMakeFiles/pModifyRoute.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/pModifyRoute/CMakeFiles/pModifyRoute.dir/build.make src/pModifyRoute/CMakeFiles/pModifyRoute.dir/clean
 .PHONY : src/pModifyRoute/CMakeFiles/pModifyRoute.dir/clean
+
+#=============================================================================
+# Target rules for target src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir
+
+# All Build rule for target.
+src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/all:
+	$(MAKE) $(MAKESILENT) -f src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/build.make src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/build.make src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jaroslawlewandowski/moos-ivp-extend/build/CMakeFiles --progress-num=18,19,20,21 "Built target pPatrolPoint"
+.PHONY : src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/all
+
+# Build rule for subdir invocation for target.
+src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jaroslawlewandowski/moos-ivp-extend/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jaroslawlewandowski/moos-ivp-extend/build/CMakeFiles 0
+.PHONY : src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/rule
+
+# Convenience name for target.
+pPatrolPoint: src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/rule
+
+.PHONY : pPatrolPoint
+
+# clean rule for target.
+src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/build.make src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/clean
+.PHONY : src/pPatrolPoint/CMakeFiles/pPatrolPoint.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
