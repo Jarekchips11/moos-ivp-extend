@@ -140,7 +140,7 @@ Behavior = BHV_StationKeep
    // ------------------------------------
       center_activate = false   // default
    hibernation_radius = -1      // default
-         inner_radius = 4       // default
+         inner_radius = 15      // default
          outer_radius = 15      // default
          outer_speed  = 1.0     // default
        transit_speed  = 2.5     // default
