@@ -48,7 +48,7 @@ Behavior = BHV_Waypoint
 
                order = normal
              //repeat  = 100000
-             repeat  = 5
+             repeat  = 1000
 
     visual_hints = nextpt_color=yellow
     visual_hints = nextpt_vertex_size=8
@@ -112,10 +112,10 @@ Behavior=BHV_ConstantSpeed
 
 Behavior=BHV_Waypoint
 {
-  name       = waypt_skeeping
+  name       = waypt_rotate
   pwt        = 100
   condition  = MODE==WATCHING
-  updates    = SKEEPING_UPDATE
+  updates    = ROTATE_UPDATE
   
            speed = 0.1
   capture_radius = 2.0
@@ -130,7 +130,7 @@ Behavior = BHV_StationKeep
    // ---------------------------
    name         = station_keep          // example
    pwt          = 100                   // default
-   condition    = MODE==SKEEPING        // example
+   condition    = MODE==STAY        // example
    //inactiveflag = STATIONING = false    // example
    //activeflag   = STATIONING = true     // example
    updates      = STATION_UPDATES

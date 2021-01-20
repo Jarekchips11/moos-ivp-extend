@@ -14,7 +14,7 @@
 
 using namespace std;
 vector <string> m_watch_point_vector;
-string nowy;
+string m_new_control_point;
   //---------------------------------------------------------
   // Constructor
 
@@ -61,7 +61,7 @@ string nowy;
         int idx0 = comming_list.find("pts={");
         int idx2 = comming_list.find("},active=");
         int idx1 = comming_list.find("},label=");
-        if(comming_list.substr(idx1+8, 20) != "alpha_waypt_skeeping" && comming_list.substr(idx1+2, 5)=="label"){
+        if(comming_list.substr(idx1+8, 20) != "alpha_waypt_rotate" && comming_list.substr(idx1+2, 5)=="label"){
           wpt_list = comming_list.substr(5, idx1 - 5 );
           m_wpt_vector = explode(wpt_list , ':');
 
@@ -113,24 +113,27 @@ string nowy;
 
     if(m_current_wpt!=m_previous_wpt && m_previous_wpt!=0){
       m_wait_time=0;
-      Notify("MODE", "SKEEPING");
+      Notify("MODE", "STAY");
       Notify("STATION_UPDATES", "station_pt="+m_wpt_vector[m_previous_wpt]);
 
 
-      int idx0 = m_watch_point_vector[m_previous_wpt-1].find(",y=");
-      int idx1 = m_watch_point_vector[m_previous_wpt-1].find(",label=");
-      nowy = m_watch_point_vector[m_previous_wpt-1].substr(2,idx0-2)+","+m_watch_point_vector[m_previous_wpt-1].substr(idx0+3,idx1-(idx0+3));;
-      Notify("KUTAS", "points="+nowy);
-
-     
-      
+      if(m_watch_point_vector.size() > (m_previous_wpt-1)){
+        int idx0 = m_watch_point_vector[m_previous_wpt-1].find(",y=");
+        int idx1 = m_watch_point_vector[m_previous_wpt-1].find(",label=");
+        m_new_control_point = m_watch_point_vector[m_previous_wpt-1].substr(2,idx0-2)+","+m_watch_point_vector[m_previous_wpt-1].substr(idx0+3,idx1-(idx0+3));        
+      }
+      else {
+        int idx0 = m_watch_point_vector[0].find(",y=");
+        int idx1 = m_watch_point_vector[0].find(",label=");
+        m_new_control_point = m_watch_point_vector[0].substr(2,idx0-2)+","+m_watch_point_vector[0].substr(idx0+3,idx1-(idx0+3));      
+      }
 
       m_state=1;
     }
     if(m_state==1 && m_curr_speed==0){
       Notify("MODE", "WATCHING");
-      Notify("SKEEPING_UPDATE", "points="+nowy);
-      Notify("SKEEPING_UPDATE", "speed=0.1");
+      Notify("ROTATE_UPDATE", "points="+m_new_control_point);
+      Notify("ROTATE_UPDATE", "speed=0.1");
       m_state=2;
     }
     if(abs(m_curr_heading-m_previous_heading)>0.1 && m_state==2 && m_counter>50){
@@ -138,11 +141,11 @@ string nowy;
       m_counter=0;
     }
     else if(abs(m_curr_heading-m_previous_heading)<0.1 && m_state==2 && m_counter>50){
-      Notify("SKEEPING_UPDATE", "speed=0.0");
+      Notify("ROTATE_UPDATE", "speed=0.0");
       m_wait_time++;
     }
     m_counter++;
-    if(m_wait_time > 100){
+    if(m_wait_time > 1000){
       Notify("MODE", "SURVEYING");
       m_state=0;
     }
@@ -190,8 +193,6 @@ string nowy;
     Register("VIEW_SEGLIST", 0);
     Register("VIEW_POINT",0);
     Register("WPT_STAT",0);
-    Register("NAV_X",0);
-    Register("WPT_INDEX",0);
     Register("WATCH_ADD",0);
     // Register("FOOBAR", 0);
   }
